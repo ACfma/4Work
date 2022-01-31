@@ -3,6 +3,12 @@
 Created on Sun Jan 23 08:25:41 2022
 
 @author: Andrea
+
+This program try to predict the next throw from your opponent at rock-paper-scissor
+given the last throws.
+You can adjust the sequence lenght (order) to examine and its significance over time (decay).
+
+Remember: more combinations mean more data needed to display a significant distribution of proability!
 """
 
 
@@ -86,8 +92,7 @@ for o in opponent:
     oppst = "".join(opponent_history)
     
     opponent_history = [x for x in  opponent_history if x]
-    beat = {'R': 'P', 'P': 'S', 'S': 'R'}
-        
+    
         
     random_predictor = RandomPredictor()
     
@@ -97,10 +102,10 @@ for o in opponent:
         if len(opponent_history)<order:
             pair_diff1 = ''
         else:
-            pair_diff1 = "".join(opponent_history[-(order):])
+            pair_diff1 = "".join(opponent_history[-order:])
     else:
         pair_diff2 = "".join(opponent_history[-(order+1):-1])
-        pair_diff1 = "".join(opponent_history[-(order):])
+        pair_diff1 = "".join(opponent_history[-order:])
 
     if pair_diff2 != '':
         markov_model.update_matrix(pair_diff2, opponent_history[-1])
