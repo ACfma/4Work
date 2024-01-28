@@ -1,3 +1,7 @@
+'''
+This simple program allows to update a folder given one or more input folders.
+In case of different updates in the input folders, the update is cancelled and an error is raised in the logbook. 
+'''
 import os
 import shutil
 import logging
