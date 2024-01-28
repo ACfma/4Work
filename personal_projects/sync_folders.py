@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # Create a file handler in the output folder
-handler = logging.FileHandler('C:\\Users\\Andrea\\Downloads\\Prova_out\\file_update.log')
+handler = logging.FileHandler('pathout\\file_update.log')
 
 # Create a formatter and add it to the handler
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -79,4 +79,4 @@ def update_files(source_folders, target_folder):
 
 # Call the function with the source and target folders
 if __name__ == "__main__":
-    update_files(["C:\\Users\\Andrea\\Downloads\\Prova_in\\","C:\\Users\\Andrea\\Downloads\\Prova_in2\\"], "C:\\Users\\Andrea\\Downloads\\Prova_out\\")
+    update_files(["pathin1","pathin2"], "pathout")
