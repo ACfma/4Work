@@ -6,27 +6,30 @@ import os
 import shutil
 import logging
 
-# Create a logger object
-logger = logging.getLogger(__name__)
-
-# Set the log level to INFO
-logger.setLevel(logging.INFO)
-
-# Create a file handler in the output folder
-handler = logging.FileHandler('pathout\\file_update.log')
-
-# Create a formatter and add it to the handler
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-
-# Add the handler to the logger if not there
-if not logger.hasHandlers():
-    logger.addHandler(handler)
-
 def update_files(source_folders, target_folder):
     # Dictionary to store the files being updated
     updating_files = {'Conflicts':[]}
+    #removing default root handlers in order to set a default one
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
+    
+    # Create a logger object
+    logger = logging.getLogger(__name__)
 
+    # Set the log level to INFO
+    logger.setLevel(logging.INFO)
+
+    # Create a file handler in the output folder
+    handler = logging.FileHandler('pathlog\\file_update.log')
+
+    # Create a formatter and add it to the handler
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+
+    # Add the handler to the logger if not there
+    if not logger.hasHandlers():
+        logger.addHandler(handler)
+    
     # First pass: Check for conflicts
     for source_folder in source_folders:
         # Walk through all files in the current source folder and its subfolders
@@ -79,6 +82,9 @@ def update_files(source_folders, target_folder):
                     #logger.info(f'Copied {source_file} to {target_file}')
                     ##
                     pass
+    logger.info('-------END-------')
+    #removing created handler
+    logger.removeHandler(handler)
     return
 
 # Call the function with the source and target folders
