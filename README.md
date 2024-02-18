@@ -1,7 +1,7 @@
 # 4Work
 This repository represent an example of some of the skills reported in the CV.
 
-In Utility_Script you can find some office automation scripts that made my day better at work (I hope that they could help you too :D)
+In Utility_Scripts you can find some office automation scripts that made my day better at work (I hope that they could help you too :D)
 
 In model_svm you can find a project made for a university exam project which aim was to using machine learning models. In this particular project I focused on the performance comparisons between svm (with unsupervised feature reduction instances like PCA or iterative feature reduction) and a convolutional neural network (deep learning) for finding Alzheimer desease in MRI scans.
 
